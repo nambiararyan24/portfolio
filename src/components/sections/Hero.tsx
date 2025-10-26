@@ -53,7 +53,7 @@ export default function Hero() {
   }, [rotatingWords.length]);
 
   return (
-    <section className="relative h-[70vh] sm:h-[80vh] lg:h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-black">
+    <section className="relative h-[100vh] sm:h-[100vh] lg:h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-black pt-16">
       {/* Status Bar */}
       <div className="absolute top-4 left-2 sm:left-4 z-20">
         <div className="flex items-center space-x-1 sm:space-x-2 bg-black/20 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1.5 text-xs text-white/80">

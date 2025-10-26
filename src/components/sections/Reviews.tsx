@@ -66,7 +66,7 @@ export default function Reviews({ reviews }: ReviewsProps) {
           </p>
         </div>
 
-        <div className="relative max-w-md mx-auto">
+        <div className="relative max-w-md mx-auto px-4">
           {/* Carousel Container */}
           <div className="relative h-64 flex items-center justify-center">
             {/* Review Cards */}

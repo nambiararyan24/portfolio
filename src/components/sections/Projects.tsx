@@ -65,7 +65,10 @@ export default function Projects({ projects }: ProjectsProps) {
               {/* Project Image */}
               <div 
                 className="relative overflow-hidden cursor-pointer"
-                onClick={() => setClickedProject(clickedProject === project.id ? null : project.id)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setClickedProject(clickedProject === project.id ? null : project.id);
+                }}
               >
                 {project.thumbnail_url ? (
                   <img
