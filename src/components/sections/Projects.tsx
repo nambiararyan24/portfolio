@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Project } from '@/types';
 import Link from 'next/link';
 import { ExternalLink, ArrowRight } from 'lucide-react';
@@ -29,6 +30,8 @@ export default function Projects({ projects }: ProjectsProps) {
       </section>
     );
   }
+
+  const [clickedProject, setClickedProject] = useState<string | null>(null);
 
   return (
     <section id="projects" className="py-16 bg-slate-950">
@@ -60,7 +63,10 @@ export default function Projects({ projects }: ProjectsProps) {
                 }}
               >
               {/* Project Image */}
-              <div className="relative overflow-hidden">
+              <div 
+                className="relative overflow-hidden cursor-pointer"
+                onClick={() => setClickedProject(clickedProject === project.id ? null : project.id)}
+              >
                 {project.thumbnail_url ? (
                   <img
                     src={project.thumbnail_url}
@@ -80,13 +86,16 @@ export default function Projects({ projects }: ProjectsProps) {
                   <span className="text-slate-400 text-sm">No image</span>
                 </div>
                 
-                {/* Overlay - desktop only hover, always visible on mobile */}
-                <div className="absolute inset-0 bg-black/60 lg:opacity-0 lg:group-hover:opacity-100 opacity-100 lg:transition-opacity lg:duration-300 flex items-center justify-center">
+                {/* Overlay - desktop hover, mobile tap */}
+                <div className={`absolute inset-0 bg-black/60 lg:opacity-0 lg:group-hover:opacity-100 lg:transition-opacity lg:duration-300 flex items-center justify-center ${
+                  clickedProject === project.id ? 'opacity-100' : 'opacity-0 lg:opacity-0'
+                }`}>
                   <div className="flex flex-col sm:flex-row gap-2 sm:space-x-2">
                     <a
                       href={`/project/${project.slug}`}
                       className="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white rounded-2xl text-sm hover:bg-emerald-700 transition-colors"
                       onClick={(e) => {
+                        e.stopPropagation();
                         console.log('View Details clicked for project:', project.slug);
                         console.log('Navigating to:', `/project/${project.slug}`);
                         console.log('Link href:', e.currentTarget.href);
@@ -102,6 +111,7 @@ export default function Projects({ projects }: ProjectsProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center px-4 py-2 bg-white text-black rounded-2xl text-sm hover:bg-gray-200 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <ExternalLink className="mr-1 h-3 w-3" />
                         Live Site

@@ -90,7 +90,7 @@ export default function Reviews({ reviews }: ReviewsProps) {
                     )}
                   >
                      {/* Card */}
-                     <div className="bg-slate-900 rounded-2xl shadow-xl p-6 w-96 h-full flex flex-col justify-center relative hover:bg-slate-800 transition-all duration-300">
+                     <div className="bg-slate-900 rounded-2xl shadow-xl p-6 w-full max-w-sm h-full flex flex-col justify-center relative hover:bg-slate-800 transition-all duration-300">
                       {/* Client Info */}
                       <div className="text-left mb-4">
                         <div className="font-semibold text-white text-lg">

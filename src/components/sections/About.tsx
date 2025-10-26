@@ -33,7 +33,7 @@ export default function About({ projectCount }: AboutProps) {
                 <div className="flex-1 text-center sm:text-left">
                   <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Aryan Nambiar</h2>
                   <p className="text-emerald-400 text-base sm:text-lg font-medium mb-2">Freelance Web Developer</p>
-                  <div className="inline-flex items-center px-3 py-1 bg-green-400/10 border border-green-400/20 rounded-full">
+                  <div className="inline-flex items-center px-3 py-1 bg-green-400/10 rounded-full">
                     <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                     <span className="text-green-400 text-sm font-medium">Available</span>
                   </div>

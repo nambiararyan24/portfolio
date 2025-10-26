@@ -75,16 +75,16 @@ export default function Hero() {
       </div>
 
       <div className="text-center text-white px-4">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8">
-          <div className="mb-4 sm:mb-6">Build Your</div>
-          <div className="text-emerald-400 transition-all duration-500 ease-in-out mb-4 sm:mb-6">{rotatingWords[currentWordIndex]}</div>
+        <h1 className="text-5xl sm:text-6xl lg:text-6xl font-bold mb-12">
+          <div className="mb-6 sm:mb-6">Build Your</div>
+          <div className="text-emerald-400 transition-all duration-500 ease-in-out mb-6 sm:mb-6">{rotatingWords[currentWordIndex]}</div>
           <div>With Me</div>
         </h1>
         
         {/* Down Arrow Button */}
         <button
           onClick={scrollToAbout}
-          className="mt-8 p-3 rounded-full bg-emerald-600 hover:bg-emerald-700 backdrop-blur-sm border border-emerald-500/50 transition-all duration-300 hover:scale-110 group"
+          className="mt-8 p-3 rounded-full bg-emerald-600 hover:bg-emerald-700 backdrop-blur-sm transition-all duration-300 hover:scale-110 group"
           aria-label="Scroll to About section"
         >
           <ChevronDown className="h-6 w-6 text-white transition-colors duration-300" />
