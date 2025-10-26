@@ -16,9 +16,9 @@ export default async function Home() {
 
 
   return (
-    <div className="min-h-screen flex">
-      {/* Main content area - scrollable - exactly 50% width */}
-      <div className="w-1/2 scrollable-main-content overflow-y-auto h-screen">
+    <div className="min-h-screen flex lg:flex-row flex-col">
+      {/* Main content area - full width on mobile, 50% on desktop */}
+      <div className="w-full lg:w-1/2 lg:overflow-y-auto lg:h-screen">
         <main>
           <Hero />
           <About projectCount={projects.length} />
@@ -27,14 +27,14 @@ export default async function Home() {
           <Reviews reviews={reviews} />
           
           {/* Mobile contact form */}
-          <div className="lg:hidden py-16">
+          <div className="lg:hidden py-16 bg-slate-900">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <div className="max-w-2xl mx-auto">
                 <div className="text-center mb-12">
-                  <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
+                  <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
                     Let's Work Together
                   </h2>
-                  <p className="text-muted-foreground text-lg">
+                  <p className="text-slate-300 text-lg">
                     Have a project in mind? I'd love to hear about it. Send me a message and I'll respond within 24 hours.
                   </p>
                 </div>
@@ -45,8 +45,8 @@ export default async function Home() {
         </main>
       </div>
       
-      {/* Fixed contact form - exactly 50% width, totally opaque */}
-      <div className="w-1/2 fixed right-0 top-0 h-full bg-slate-900 overflow-y-auto">
+      {/* Fixed contact form - hidden on mobile, visible on desktop */}
+      <div className="hidden lg:block lg:w-1/2 lg:fixed lg:right-0 lg:top-0 lg:h-full bg-slate-900 lg:overflow-y-auto">
         <div className="h-full flex flex-col">
           <div className="flex-1 flex flex-col justify-start p-8">
             <div className="mb-8">
