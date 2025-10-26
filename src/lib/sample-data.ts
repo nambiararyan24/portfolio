@@ -6,6 +6,8 @@ export const sampleServices: Service[] = [
     title: 'Web Development',
     description: 'Custom websites and web applications built with modern technologies like React, Next.js, and TypeScript.',
     icon_url: '/icons/web-dev.svg',
+    type: 'Product',
+    display_order: 0,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
   },
@@ -14,6 +16,8 @@ export const sampleServices: Service[] = [
     title: 'E-commerce Solutions',
     description: 'Complete e-commerce platforms with payment integration, inventory management, and admin dashboards.',
     icon_url: '/icons/ecommerce.svg',
+    type: 'Product',
+    display_order: 1,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
   },
@@ -22,6 +26,8 @@ export const sampleServices: Service[] = [
     title: 'Mobile-First Design',
     description: 'Responsive designs that work perfectly on all devices, from mobile phones to desktop computers.',
     icon_url: '/icons/mobile.svg',
+    type: 'Skill',
+    display_order: 2,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
   },
@@ -30,6 +36,8 @@ export const sampleServices: Service[] = [
     title: 'Performance Optimization',
     description: 'Fast-loading websites with optimized images, code splitting, and modern performance techniques.',
     icon_url: '/icons/performance.svg',
+    type: 'Skill',
+    display_order: 3,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
   },
@@ -94,6 +102,7 @@ export const sampleProjects: Project[] = [
     thumbnail_url: '/images/project-1.jpg',
     full_description: 'A comprehensive e-commerce solution built with Next.js, featuring a modern design, secure payment processing, and a complete admin dashboard for managing products, orders, and customers.',
     tools_used: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'Supabase'],
+    display_order: 0,
     case_study_content: `# E-commerce Platform Case Study
 
 ## Project Overview
@@ -130,6 +139,7 @@ This project involved building a complete e-commerce platform from scratch, incl
     thumbnail_url: '/images/project-2.jpg',
     full_description: 'A responsive portfolio website featuring a clean design, smooth animations, and an integrated contact form with file upload capabilities.',
     tools_used: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
+    display_order: 1,
     case_study_content: `# Portfolio Website Case Study
 
 ## Project Overview
@@ -166,6 +176,7 @@ A personal portfolio website designed to showcase projects and skills while prov
     thumbnail_url: '/images/project-3.jpg',
     full_description: 'A full-featured SaaS dashboard with user management, analytics visualization, and real-time data updates.',
     tools_used: ['React', 'TypeScript', 'Chart.js', 'Supabase', 'Tailwind CSS'],
+    display_order: 2,
     case_study_content: `# SaaS Dashboard Case Study
 
 ## Project Overview
