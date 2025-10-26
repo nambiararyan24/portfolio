@@ -6,12 +6,18 @@ import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 import { ArrowLeft, Star } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { Review, Project } from '@/types';
+import { Review } from '@/types';
+
+interface ProjectOption {
+  id: string;
+  title: string;
+  slug: string;
+}
 
 export default function EditReviewPage() {
   const [loading, setLoading] = useState(false);
   const [review, setReview] = useState<Review | null>(null);
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<ProjectOption[]>([]);
   const [formData, setFormData] = useState({
     name: '',
     company: '',
