@@ -6,11 +6,16 @@ import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 import { ArrowLeft, Star } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { Project } from '@/types';
+
+interface ProjectOption {
+  id: string;
+  title: string;
+  slug: string;
+}
 
 export default function NewReviewPage() {
   const [loading, setLoading] = useState(false);
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<ProjectOption[]>([]);
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -93,7 +98,7 @@ export default function NewReviewPage() {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
