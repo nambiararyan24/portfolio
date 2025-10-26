@@ -1,65 +1,67 @@
-import Image from "next/image";
+import Hero from '@/components/sections/Hero';
+import About from '@/components/sections/About';
+import Services from '@/components/sections/Services';
+import Projects from '@/components/sections/Projects';
+import Reviews from '@/components/sections/Reviews';
+import ContactForm from '@/components/ContactForm';
+import { getServices, getProjects, getReviews } from '@/lib/database';
 
-export default function Home() {
+export default async function Home() {
+  // Fetch data in parallel
+  const [services, projects, reviews] = await Promise.all([
+    getServices().catch(() => []),
+    getProjects().catch(() => []),
+    getReviews().catch(() => []),
+  ]);
+
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen flex">
+      {/* Main content area - scrollable - exactly 50% width */}
+      <div className="w-1/2 scrollable-main-content overflow-y-auto h-screen">
+        <main>
+          <Hero />
+          <About projectCount={projects.length} />
+          <Services services={services} />
+          <Projects projects={projects} />
+          <Reviews reviews={reviews} />
+          
+          {/* Mobile contact form */}
+          <div className="lg:hidden py-16">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-2xl mx-auto">
+                <div className="text-center mb-12">
+                  <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
+                    Let's Work Together
+                  </h2>
+                  <p className="text-muted-foreground text-lg">
+                    Have a project in mind? I'd love to hear about it. Send me a message and I'll respond within 24 hours.
+                  </p>
+                </div>
+                <ContactForm />
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+      
+      {/* Fixed contact form - exactly 50% width, totally opaque */}
+      <div className="w-1/2 fixed right-0 top-0 h-full bg-slate-900 overflow-y-auto">
+        <div className="h-full flex flex-col">
+          <div className="flex-1 flex flex-col justify-start p-8">
+            <div className="mb-8">
+              <h2 className="text-4xl font-bold text-white mb-4">
+                Let's Work Together
+              </h2>
+              <p className="text-slate-300 text-lg">
+                Have a project in mind? I'd love to hear about it. Send me a message and I'll respond within 24 hours.
+              </p>
+            </div>
+            
+            <ContactForm isFixed={true} />
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
     </div>
   );
 }
