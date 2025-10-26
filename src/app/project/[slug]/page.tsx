@@ -58,9 +58,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   console.log('Found project reviews:', projectReviews);
 
   return (
-    <div className="min-h-screen flex">
-      {/* Main content area - scrollable - exactly 50% width */}
-      <div className="w-1/2">
+    <div className="min-h-screen flex lg:flex-row flex-col">
+      {/* Main content area - full width on mobile, 50% on desktop */}
+      <div className="w-full lg:w-1/2 lg:overflow-y-auto lg:h-screen">
         <main>
           {/* Back Button */}
           <div className="pt-8 pb-4 bg-slate-950">
@@ -73,11 +73,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <section className="py-8 bg-slate-950">
             <div className="w-full px-4">
               <div className="max-w-2xl mx-auto">
-                <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
                   {project.title}
                 </h1>
                 
-                <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                <p className="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed">
                   {project.short_description}
                 </p>
 
@@ -245,11 +245,28 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </section>
           )}
+
+          {/* Mobile Contact Form */}
+          <section className="lg:hidden py-16 bg-slate-900">
+            <div className="w-full px-4">
+              <div className="max-w-2xl mx-auto">
+                <div className="text-center mb-12">
+                  <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+                    Let's Work Together
+                  </h2>
+                  <p className="text-slate-300 text-lg">
+                    Have a project in mind? I'd love to hear about it. Send me a message and I'll respond within 24 hours.
+                  </p>
+                </div>
+                <ContactForm />
+              </div>
+            </div>
+          </section>
         </main>
       </div>
       
-      {/* Fixed contact form - exactly 50% width, totally opaque */}
-      <div className="w-1/2 fixed right-0 top-0 h-full bg-slate-900 overflow-y-auto">
+      {/* Fixed contact form - hidden on mobile, visible on desktop */}
+      <div className="hidden lg:block lg:w-1/2 lg:fixed lg:right-0 lg:top-0 lg:h-full bg-slate-900 lg:overflow-y-auto">
         <div className="h-full flex flex-col">
           <div className="flex-1 flex flex-col justify-start p-8">
             <div className="mb-8">
