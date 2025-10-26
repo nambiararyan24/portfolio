@@ -55,8 +55,8 @@ export default function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-black">
       {/* Status Bar */}
-      <div className="absolute top-4 left-4 z-20">
-        <div className="flex items-center space-x-2 bg-black/20 backdrop-blur-sm rounded-full px-3 py-1.5 text-xs text-white/80">
+      <div className="absolute top-4 left-2 sm:left-4 z-20">
+        <div className="flex items-center space-x-1 sm:space-x-2 bg-black/20 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1.5 text-xs text-white/80">
           <div className="flex items-center space-x-1">
             {isOnline ? (
               <CircleDot className="h-3 w-3 text-green-400" />
@@ -74,10 +74,10 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="text-center text-white">
-        <h1 className="text-6xl font-bold mb-8">
-          <div className="mb-6">Build Your</div>
-          <div className="text-emerald-400 transition-all duration-500 ease-in-out mb-6">{rotatingWords[currentWordIndex]}</div>
+      <div className="text-center text-white px-4">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8">
+          <div className="mb-4 sm:mb-6">Build Your</div>
+          <div className="text-emerald-400 transition-all duration-500 ease-in-out mb-4 sm:mb-6">{rotatingWords[currentWordIndex]}</div>
           <div>With Me</div>
         </h1>
         

@@ -16,9 +16,9 @@ export default function About({ projectCount }: AboutProps) {
           </div>
           
           <div>
-            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl pl-12 pr-20 py-8 border border-slate-700 shadow-2xl text-left">
-              <div className="flex items-center mb-8">
-                <div className="w-32 h-32 rounded-2xl mr-6 flex items-center justify-center flex-shrink-0 overflow-hidden">
+            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl px-6 sm:px-12 lg:pl-12 lg:pr-20 py-8 border border-slate-700 shadow-2xl text-left">
+              <div className="flex flex-col sm:flex-row items-center mb-8">
+                <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl sm:mr-6 mb-4 sm:mb-0 flex items-center justify-center flex-shrink-0 overflow-hidden">
                   <img
                     src="/images/aryan.png"
                     alt="Aryan Nambiar"
@@ -30,9 +30,9 @@ export default function About({ projectCount }: AboutProps) {
                   />
                 </div>
                 
-                <div className="flex-1">
-                  <h2 className="text-3xl font-bold text-white mb-2 whitespace-nowrap">Aryan Nambiar</h2>
-                  <p className="text-emerald-400 text-lg font-medium whitespace-nowrap mb-2">Freelance Web Developer</p>
+                <div className="flex-1 text-center sm:text-left">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Aryan Nambiar</h2>
+                  <p className="text-emerald-400 text-base sm:text-lg font-medium mb-2">Freelance Web Developer</p>
                   <div className="inline-flex items-center px-3 py-1 bg-green-400/10 border border-green-400/20 rounded-full">
                     <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                     <span className="text-green-400 text-sm font-medium">Available</span>
