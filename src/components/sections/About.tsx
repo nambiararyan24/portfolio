@@ -16,7 +16,7 @@ export default function About({ projectCount }: AboutProps) {
           </div>
           
           <div>
-            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl px-6 sm:px-12 lg:pl-12 lg:pr-20 py-8 border border-slate-700 shadow-2xl text-left">
+            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl px-6 sm:px-12 lg:pl-12 lg:pr-20 py-8 shadow-2xl text-left">
               <div className="flex flex-col sm:flex-row items-center mb-8">
                 <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl sm:mr-6 mb-4 sm:mb-0 flex items-center justify-center flex-shrink-0 overflow-hidden">
                   <img

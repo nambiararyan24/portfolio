@@ -127,7 +127,7 @@ export default function Reviews({ reviews }: ReviewsProps) {
                 disabled={isTransitioning}
                 className={cn(
                   "inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-800 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
-                  "border border-slate-700 hover:border-slate-600 hover:bg-slate-700"
+                  "hover:bg-slate-700"
                 )}
                 aria-label="Previous review"
               >
@@ -161,7 +161,7 @@ export default function Reviews({ reviews }: ReviewsProps) {
                 disabled={isTransitioning}
                 className={cn(
                   "inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-800 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
-                  "border border-slate-700 hover:border-slate-600 hover:bg-slate-700"
+                  "hover:bg-slate-700"
                 )}
                 aria-label="Next review"
               >

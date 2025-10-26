@@ -80,12 +80,12 @@ export default function Projects({ projects }: ProjectsProps) {
                   <span className="text-slate-400 text-sm">No image</span>
                 </div>
                 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="flex space-x-2">
+                {/* Overlay - desktop only hover, always visible on mobile */}
+                <div className="absolute inset-0 bg-black/60 lg:opacity-0 lg:group-hover:opacity-100 opacity-100 lg:transition-opacity lg:duration-300 flex items-center justify-center">
+                  <div className="flex flex-col sm:flex-row gap-2 sm:space-x-2">
                     <a
                       href={`/project/${project.slug}`}
-                      className="inline-flex items-center px-4 py-2 bg-emerald-600 text-white rounded-2xl text-sm hover:bg-emerald-700 transition-colors"
+                      className="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 text-white rounded-2xl text-sm hover:bg-emerald-700 transition-colors"
                       onClick={(e) => {
                         console.log('View Details clicked for project:', project.slug);
                         console.log('Navigating to:', `/project/${project.slug}`);
@@ -101,7 +101,7 @@ export default function Projects({ projects }: ProjectsProps) {
                         href={project.external_link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-4 py-2 bg-white text-black rounded-2xl text-sm hover:bg-gray-200 transition-colors"
+                        className="inline-flex items-center justify-center px-4 py-2 bg-white text-black rounded-2xl text-sm hover:bg-gray-200 transition-colors"
                       >
                         <ExternalLink className="mr-1 h-3 w-3" />
                         Live Site
