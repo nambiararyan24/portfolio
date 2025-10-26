@@ -37,6 +37,8 @@ export default function NewServicePage() {
       await createService({
         ...data,
         icon_url: data.icon_url || '',
+        type: 'Product' as 'Product' | 'Skill',
+        display_order: 0,
       });
       
       toast.success('Service created successfully!');
