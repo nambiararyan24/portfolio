@@ -11,3 +11,4 @@ ALTER TABLE services ADD CONSTRAINT check_service_type
 -- Update existing services to have a default type of 'Product' (if they don't have one)
 UPDATE services SET type = 'Product' WHERE type IS NULL;
 
+
