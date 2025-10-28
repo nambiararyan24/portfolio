@@ -77,6 +77,7 @@ export default function OnboardingForm() {
     mode: 'onChange',
     defaultValues: {
       newsletter_signup: false,
+      features_needed: [],
     },
   });
 
