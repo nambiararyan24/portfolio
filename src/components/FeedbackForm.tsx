@@ -172,7 +172,7 @@ export default function FeedbackForm() {
         </div>
 
         {/* Form Container */}
-        <div className="bg-slate-800 border border-slate-700 rounded-xl shadow-xl p-6">
+        <div className="bg-slate-800 border border-slate-700 rounded-xl shadow-xl p-4 sm:p-6">
           <form onSubmit={handleSubmit(onSubmit)}>
             {/* Step 1: Client Details */}
             {currentStep === 1 && (
@@ -315,27 +315,27 @@ export default function FeedbackForm() {
             )}
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between mt-6 pt-4 border-t border-slate-700">
+            <div className="flex justify-between gap-2 mt-6 pt-4 border-t border-slate-700">
               <button
                 type="button"
                 onClick={handlePrevious}
                 disabled={currentStep === 1}
                 className={cn(
-                  'px-5 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2',
+                  'px-4 sm:px-5 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1 sm:gap-2',
                   currentStep === 1
                     ? 'bg-slate-700 text-slate-500 cursor-not-allowed'
                     : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                 )}
               >
                 <ArrowLeft className="h-4 w-4" />
-                Previous
+                <span className="hidden sm:inline">Previous</span>
               </button>
 
               {currentStep < MAX_STEPS - 1 ? (
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="px-5 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                  className="px-4 sm:px-5 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-1 sm:gap-2"
                 >
                   Next
                   <ArrowRight className="h-4 w-4" />
@@ -344,7 +344,7 @@ export default function FeedbackForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-5 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-4 sm:px-5 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-1 sm:gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit Feedback'}
                 </button>

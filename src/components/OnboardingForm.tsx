@@ -210,7 +210,7 @@ export default function OnboardingForm() {
         </div>
 
         {/* Form Container */}
-        <div className="bg-slate-800 border border-slate-700 rounded-xl shadow-xl p-6">
+        <div className="bg-slate-800 border border-slate-700 rounded-xl shadow-xl p-4 sm:p-6">
           <form onSubmit={currentStep === MAX_STEPS - 1 ? handleSubmit(onSubmit) : (e) => { e.preventDefault(); }} id="onboarding-form">
             {/* Step 1: Client Information */}
             {currentStep === 1 && (
@@ -223,7 +223,7 @@ export default function OnboardingForm() {
                 </div>
 
                 <div className="space-y-3">
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label htmlFor="client_name" className="block text-xs font-medium mb-1 text-slate-300">
                         Name <span className="text-red-400">*</span>
@@ -263,7 +263,7 @@ export default function OnboardingForm() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label htmlFor="company" className="block text-xs font-medium mb-1 text-slate-300">
                         Company (if applicable) <span className="text-red-400">*</span>
@@ -283,7 +283,7 @@ export default function OnboardingForm() {
                       )}
                     </div>
 
-                    <div>
+                    <div className="col-span-1 sm:col-span-2">
                       <label htmlFor="phone" className="block text-xs font-medium mb-1 text-slate-300">
                         Phone Number <span className="text-red-400">*</span>
                       </label>
@@ -363,7 +363,7 @@ export default function OnboardingForm() {
                     )}
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label htmlFor="budget_range" className="block text-xs font-medium mb-1 text-slate-300">
                         Budget Range <span className="text-red-400">*</span>
@@ -388,7 +388,7 @@ export default function OnboardingForm() {
                       )}
                     </div>
 
-                    <div>
+                    <div className="col-span-1 sm:col-span-2">
                       <label htmlFor="timeline" className="block text-xs font-medium mb-1 text-slate-300">
                         Timeline <span className="text-red-400">*</span>
                       </label>
@@ -417,7 +417,7 @@ export default function OnboardingForm() {
                     <label className="block text-xs font-medium mb-2 text-slate-300">
                       Preferred Contact Method <span className="text-red-400">*</span>
                     </label>
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                       {['email', 'phone', 'either'].map((method) => (
                         <label
                           key={method}
@@ -449,7 +449,7 @@ export default function OnboardingForm() {
                       Features Needed
                       <span className="text-slate-500 ml-1 font-normal">(select all that apply)</span>
                     </label>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {FEATURES_OPTIONS.map((feature) => (
                         <label
                           key={feature}
@@ -652,20 +652,20 @@ export default function OnboardingForm() {
             )}
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between mt-6 pt-4 border-t border-slate-700">
+            <div className="flex justify-between gap-2 mt-6 pt-4 border-t border-slate-700">
               <button
                 type="button"
                 onClick={handlePrevious}
                 disabled={currentStep === 1}
                 className={cn(
-                  'px-5 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2',
+                  'px-4 sm:px-5 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1 sm:gap-2',
                   currentStep === 1
                     ? 'bg-slate-700 text-slate-500 cursor-not-allowed'
                     : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                 )}
               >
                 <ArrowLeft className="h-4 w-4" />
-                Previous
+                <span className="hidden sm:inline">Previous</span>
               </button>
 
               {currentStep < MAX_STEPS - 1 ? (
@@ -676,9 +676,10 @@ export default function OnboardingForm() {
                     e.stopPropagation();
                     handleNext(e);
                   }}
-                  className="px-5 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                  className="px-4 sm:px-5 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-1 sm:gap-2"
                 >
-                  Next
+                  <span className="hidden sm:inline">Next</span>
+                  <span className="sm:hidden">Next</span>
                   <ArrowRight className="h-4 w-4" />
                 </button>
               ) : (
@@ -686,9 +687,9 @@ export default function OnboardingForm() {
                   type="submit"
                   form="onboarding-form"
                   disabled={isSubmitting}
-                  className="px-5 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-4 sm:px-5 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-1 sm:gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit Onboarding'}
+                  {isSubmitting ? 'Submitting...' : <span><span className="hidden sm:inline">Submit</span><span className="sm:hidden">Submit</span></span>}
                 </button>
               )}
             </div>
