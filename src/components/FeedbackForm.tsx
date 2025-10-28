@@ -127,9 +127,9 @@ export default function FeedbackForm() {
           <div className="mb-6">
             <CheckCircle2 className="h-20 w-20 mx-auto text-emerald-500" />
           </div>
-          <h1 className="text-3xl font-bold mb-4 text-white">Thank You!</h1>
+          <h1 className="text-3xl font-bold mb-4 text-white">You're all set!</h1>
           <p className="text-slate-300 mb-8">
-            Your feedback has been submitted successfully. We appreciate you taking the time to share your experience with us.
+            I'll review your feedback and appreciate you taking the time to share your experience.
           </p>
           <button
             onClick={() => window.location.href = '/'}
@@ -147,9 +147,9 @@ export default function FeedbackForm() {
       <div className="w-full max-w-4xl">
         {/* Page Header */}
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold mb-1 text-white">Client Feedback Form</h1>
+          <h1 className="text-2xl font-bold mb-1 text-white">Share your experience</h1>
           <p className="text-slate-300 text-sm">
-            We value your opinion. Share your experience with us.
+            A few quick questions to hear about your experience
           </p>
         </div>
 
@@ -178,9 +178,9 @@ export default function FeedbackForm() {
             {currentStep === 1 && (
               <div className="space-y-4 animate-slide-up">
                 <div>
-                  <h2 className="text-xl font-bold mb-1 text-white">Your Details</h2>
+                  <h2 className="text-xl font-bold mb-1 text-white">Basic info</h2>
                   <p className="text-slate-400 text-sm">
-                    Please provide your name and company
+                    Let's start with your details
                   </p>
                 </div>
 
@@ -230,9 +230,9 @@ export default function FeedbackForm() {
             {currentStep === 2 && (
               <div className="space-y-4 animate-slide-up">
                 <div>
-                  <h2 className="text-xl font-bold mb-1 text-white">Rate Your Experience</h2>
+                  <h2 className="text-xl font-bold mb-1 text-white">Rate your experience</h2>
                   <p className="text-slate-400 text-sm">
-                    How would you rate your experience working with us?
+                    How would you rate working with me?
                   </p>
                 </div>
 
@@ -282,17 +282,17 @@ export default function FeedbackForm() {
             {currentStep === 3 && (
               <div className="space-y-4 animate-slide-up">
                 <div>
-                  <h2 className="text-xl font-bold mb-1 text-white">Share Your Feedback</h2>
+                  <h2 className="text-xl font-bold mb-1 text-white">Share your thoughts</h2>
                   <p className="text-slate-400 text-sm">
-                    Tell us about your experience in detail
+                    Tell me about your experience in detail
                   </p>
                 </div>
 
                 <div className="space-y-3">
                   <div>
-                    <label htmlFor="content" className="block text-xs font-medium mb-1 text-slate-300">
-                      Your Feedback <span className="text-red-400">*</span>
-                    </label>
+                      <label htmlFor="content" className="block text-xs font-medium mb-1 text-slate-300">
+                        Your feedback <span className="text-red-400">*</span>
+                      </label>
                     <textarea
                       {...register('content')}
                       id="content"
