@@ -39,7 +39,7 @@ const onboardingSchema = z.object({
   budget_range: z.string().min(1, 'Budget range is required'),
   timeline: z.string().min(1, 'Timeline is required'),
   preferred_contact: z.string().min(1, 'Preferred contact method is required'),
-  features_needed: z.array(z.string()).default([]),
+  features_needed: z.array(z.string()),
   
   // Step 3: Project Details
   project_description: z.string().min(10, 'Please describe your project'),
@@ -52,7 +52,7 @@ const onboardingSchema = z.object({
   // Step 4: Additional Information
   how_hear: z.string().optional(),
   additional_info: z.string().optional(),
-  newsletter_signup: z.boolean().default(false),
+  newsletter_signup: z.boolean(),
 });
 
 type OnboardingFormData = z.infer<typeof onboardingSchema>;
@@ -77,7 +77,7 @@ export default function OnboardingForm() {
     mode: 'onChange',
     defaultValues: {
       newsletter_signup: false,
-      features_needed: [],
+      features_needed: [] as string[],
     },
   });
 
