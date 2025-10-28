@@ -44,6 +44,7 @@ export interface Review {
   content: string;
   rating: number;
   project_id?: string;
+  is_approved?: boolean;
   created_at: string;
   updated_at: string;
 }

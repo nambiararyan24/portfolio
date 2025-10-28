@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
-import { Plus, Edit, Trash2, Star, ArrowLeft } from 'lucide-react';
+import { Plus, Edit, Trash2, Star, ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import { formatDate } from '@/lib/utils';
 import toast from 'react-hot-toast';
 import { Review } from '@/types';
@@ -48,6 +48,38 @@ export default function ReviewsPage() {
       toast.error('Using sample data - database not available');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const toggleApproval = async (id: string, currentStatus: boolean) => {
+    try {
+      const { error } = await supabase
+        .from('reviews')
+        .update({ is_approved: !currentStatus })
+        .eq('id', id);
+
+      if (error) {
+        console.error('Supabase error:', error);
+        
+        // Check if the error is about missing column
+        if (error.message?.includes('is_approved') || error.code === '42703') {
+          toast.error('The is_approved column does not exist. Please run the database migration first.', {
+            duration: 6000,
+          });
+          return;
+        }
+        
+        throw error;
+      }
+      
+      toast.success(`Review ${!currentStatus ? 'approved' : 'unapproved'} successfully`);
+      await fetchReviews();
+    } catch (error) {
+      console.error('Error toggling approval:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      toast.error(`Failed to update approval status: ${errorMessage}`, {
+        duration: 6000,
+      });
     }
   };
 
@@ -146,6 +178,16 @@ export default function ReviewsPage() {
                           Sample
                         </span>
                       )}
+                      {!review.is_approved && (
+                        <span className="px-2 py-1 bg-red-600/20 text-red-400 text-xs rounded-full">
+                          Hidden
+                        </span>
+                      )}
+                      {review.is_approved && (
+                        <span className="px-2 py-1 bg-emerald-600/20 text-emerald-400 text-xs rounded-full">
+                          Live
+                        </span>
+                      )}
                     </div>
                     <p className="text-slate-400 text-sm mb-2">{review.company}</p>
                     <div className="flex items-center mb-3">
@@ -160,6 +202,24 @@ export default function ReviewsPage() {
                     </div>
                   </div>
                   <div className="flex space-x-2">
+                    {!review.is_approved && !sampleReviews.some(sample => sample.id === review.id) && (
+                      <button
+                        onClick={() => toggleApproval(review.id, false)}
+                        className="p-2 text-slate-400 hover:text-emerald-400 hover:bg-emerald-900/20 rounded-lg transition-colors"
+                        title="Approve review"
+                      >
+                        <Eye className="w-4 h-4" />
+                      </button>
+                    )}
+                    {review.is_approved && !sampleReviews.some(sample => sample.id === review.id) && (
+                      <button
+                        onClick={() => toggleApproval(review.id, true)}
+                        className="p-2 text-slate-400 hover:text-yellow-400 hover:bg-yellow-900/20 rounded-lg transition-colors"
+                        title="Hide review"
+                      >
+                        <EyeOff className="w-4 h-4" />
+                      </button>
+                    )}
                     {sampleReviews.some(sample => sample.id === review.id) ? (
                       <div className="p-2 text-slate-500 cursor-not-allowed" title="Cannot edit sample data">
                         <Edit className="w-4 h-4" />

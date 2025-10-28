@@ -183,6 +183,7 @@ export async function getReviews(): Promise<Review[]> {
     const { data, error } = await supabase
       .from('reviews')
       .select('*')
+      .eq('is_approved', true)
       .order('created_at', { ascending: false });
     
     if (error) throw error;
@@ -199,12 +200,29 @@ export async function getReviewsByProjectId(projectId: string): Promise<Review[]
       .from('reviews')
       .select('*')
       .eq('project_id', projectId)
+      .eq('is_approved', true)
       .order('created_at', { ascending: false });
     
     if (error) throw error;
     return data || [];
   } catch (error) {
     console.error('Error fetching reviews by project ID:', error);
+    return [];
+  }
+}
+
+// Get all reviews (for admin dashboard - includes unapproved)
+export async function getAllReviews(): Promise<Review[]> {
+  try {
+    const { data, error } = await supabase
+      .from('reviews')
+      .select('*')
+      .order('created_at', { ascending: false });
+    
+    if (error) throw error;
+    return data || [];
+  } catch (error) {
+    console.error('Error fetching all reviews:', error);
     return [];
   }
 }

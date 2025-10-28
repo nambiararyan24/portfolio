@@ -24,6 +24,7 @@ export default function EditReviewPage() {
     content: '',
     rating: 5,
     project_id: '',
+    is_approved: false,
   });
   const router = useRouter();
   const params = useParams();
@@ -67,6 +68,7 @@ export default function EditReviewPage() {
         content: data.content,
         rating: data.rating,
         project_id: data.project_id || '',
+        is_approved: data.is_approved ?? false,
       });
     } catch (error) {
       console.error('Error fetching review:', error);
@@ -88,6 +90,7 @@ export default function EditReviewPage() {
           content: formData.content,
           rating: formData.rating,
           project_id: formData.project_id || null,
+          is_approved: formData.is_approved,
           updated_at: new Date().toISOString(),
         })
         .eq('id', reviewId)
@@ -108,10 +111,11 @@ export default function EditReviewPage() {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
     setFormData(prev => ({
       ...prev,
-      [name]: value,
+      [name]: type === 'checkbox' ? checked : value,
     }));
   };
 
@@ -259,6 +263,23 @@ export default function EditReviewPage() {
                 className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-vertical"
                 placeholder="Enter the review content..."
               />
+            </div>
+
+            {/* Approval Status */}
+            <div>
+              <label className="flex items-center space-x-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="is_approved"
+                  checked={formData.is_approved}
+                  onChange={handleInputChange}
+                  className="w-5 h-5 bg-slate-800 border border-slate-700 rounded focus:ring-2 focus:ring-emerald-500"
+                />
+                <div>
+                  <span className="text-sm font-medium text-white">Approve for Display</span>
+                  <p className="text-sm text-slate-400">When approved, this review will be visible on the website</p>
+                </div>
+              </label>
             </div>
 
             {/* Submit Button */}

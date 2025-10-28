@@ -12,3 +12,6 @@ ALTER TABLE services ADD CONSTRAINT check_service_type
 UPDATE services SET type = 'Product' WHERE type IS NULL;
 
 
+
+
+

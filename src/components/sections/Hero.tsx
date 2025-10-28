@@ -75,7 +75,7 @@ export default function Hero() {
       </div>
 
       <div className="text-center text-white px-4">
-        <h1 className="text-5xl sm:text-6xl lg:text-6xl font-bold mb-12">
+        <h1 className="text-3xl sm:text-6xl lg:text-6xl font-bold mb-12">
           <div className="mb-6 sm:mb-6">Build Your</div>
           <div className="text-emerald-400 transition-all duration-500 ease-in-out mb-6 sm:mb-6">{rotatingWords[currentWordIndex]}</div>
           <div>With Me</div>
